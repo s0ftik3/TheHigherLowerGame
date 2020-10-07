@@ -1,0 +1,9 @@
+{
+    "main": [
+        [{ "text": "🎯 Start the Game", "callback_data": "start" }]
+    ],
+    "help": [
+        [{ "text": "💌 Report a Bug", "url": "https://t.me/id160" }, { "text": "✈️ Our Channel", "url": "https://t.me/softikjs" }],
+        [{ "text": "⬅️ Back", "callback_data": "back" }]
+    ]
+}

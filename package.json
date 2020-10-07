@@ -1,0 +1,21 @@
+{
+  "name": "the-higher-lower-game",
+  "version": "1.41.0",
+  "description": "Play «The Higher Lower» Telegram game to check your knowledge of most trending things in the Internet.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "game"
+  ],
+  "author": "softik",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^5.10.8",
+    "numeral": "^2.0.6",
+    "telegraf": "^3.38.0"
+  }
+}
