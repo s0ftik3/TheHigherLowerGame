@@ -6,8 +6,7 @@ module.exports = () => (ctx) => {
 
         // Update correct answers
         User.find({ id: ctx.from.id }).then(user => {
-            console.log(user);
-            User.updateOne({ id: ctx.from.id }, { $set: { correct_answers: user[0].correct_answers + 1 } });
+            User.updateOne({ id: ctx.from.id }, { $set: { wrong_answers: user[0].wrong_answers + 1 } }, () => console.log('Updated!'));
         });
 
         // Receive and split received data
