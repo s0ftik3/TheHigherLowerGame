@@ -27,7 +27,7 @@ module.exports = () => (ctx) => {
 
         // Update wrong answers
         User.find({ id: ctx.from.id }).then(user => {
-            User.updateOne({ id: ctx.from.id }, { $set: { wrong_answers: user[0].wrong_answers + 1 } }, () => {});
+            User.updateOne({ id: ctx.from.id }, { $set: { wrong: user[0].answers.wrong + 1 } }, () => {});
         });
 
     } catch (error) {
