@@ -1,6 +1,6 @@
 {
   "name": "the-higher-lower-game",
-  "version": "1.67.0",
+  "version": "1.84.0",
   "description": "Play «The Higher Lower» Telegram game to check your knowledge of most trending things in the Internet.",
   "main": "app.js",
   "scripts": {
