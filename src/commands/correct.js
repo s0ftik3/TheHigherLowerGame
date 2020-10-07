@@ -27,9 +27,9 @@ module.exports = () => (ctx) => {
 
         // Update correct answers
         User.find({ id: ctx.from.id }).then(user => {
+            console.log(user);
             User.updateOne({ id: ctx.from.id }, { $set: { correct: user[0].answers.correct + 1 } }, () => {});
         });
-
 
     } catch (error) {
 
