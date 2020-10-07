@@ -4,11 +4,6 @@ const sendBugReport = require('../scripts/sendBugReport');
 module.exports = () => (ctx) => {
     try {
 
-        // Update correct answers
-        User.find({ id: ctx.from.id }).then(user => {
-            User.updateOne({ id: ctx.from.id }, { $set: { wrong_answers: user[0].wrong_answers + 1 } }, () => console.log('Updated!'));
-        });
-
         // Receive and split received data
         let data = ctx.callbackQuery.data.replace(/yes_/g, '');
         let arr = data.split('/');
@@ -29,6 +24,12 @@ module.exports = () => (ctx) => {
     
         // Notify user
         ctx.answerCbQuery('✅ Your answered correct!');
+
+        // Update correct answers
+        User.find({ id: ctx.from.id }).then(user => {
+            User.updateOne({ id: ctx.from.id }, { $set: { correct_answers: user[0].correct_answers + 1 } }, () => {});
+        });
+
 
     } catch (error) {
 
