@@ -8,6 +8,8 @@ mongoose.connect(process.env.DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
+}).then(() => {
+    return console.log('Connected to the database.')
 })
 
 // Important commands
