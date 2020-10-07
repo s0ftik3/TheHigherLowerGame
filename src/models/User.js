@@ -10,17 +10,8 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     answers: {
-        type: Object,
-        default: {
-            correct: {
-                type: Number,
-                default: 0
-            },
-            wrong: {
-                type: Number,
-                default: 0
-            }
-        }
+        correct: { type: Number, default: 0 },
+        wrong: { type: Number, default: 0 }
     },
     joinedAt: {
         type: Date,
