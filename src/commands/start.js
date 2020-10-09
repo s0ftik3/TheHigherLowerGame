@@ -3,7 +3,15 @@ const sendBugReport = require('../scripts/sendBugReport');
 const findUser = require('../scripts/findUser');
 const buttons = require('../config/buttons.json');
 
-module.exports = () => async (i18n, ctx) => {
+const path = require('path');
+const TelegrafI18n = require('telegraf-i18n');
+const i18n = new TelegrafI18n({
+    defaultLanguage: 'en',
+    allowMissing: false, // Default true
+    directory: path.resolve(__dirname, '../locales')
+});
+
+module.exports = () => async (ctx) => {
     try {
 
         // Check if there is such a user in database
