@@ -7,7 +7,7 @@ const TelegrafI18n = require('telegraf-i18n');
 const i18n = new TelegrafI18n({
     defaultLanguage: 'en',
     allowMissing: false, // Default true
-    directory: path.resolve(__dirname, 'locales')
+    directory: path.resolve(__dirname, 'src/locales')
 });
 
 const { Extra } = telegraf;
