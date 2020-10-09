@@ -3,14 +3,6 @@ const sendBugReport = require('../scripts/sendBugReport');
 const findUser = require('../scripts/findUser');
 const buttons = require('../config/buttons.json');
 
-const path = require('path');
-const TelegrafI18n = require('telegraf-i18n');
-const i18n = new TelegrafI18n({
-    defaultLanguage: 'en',
-    allowMissing: false, // Default true
-    directory: path.resolve(__dirname, '../locales')
-});
-
 module.exports = () => async (ctx) => {
     try {
 
@@ -23,11 +15,11 @@ module.exports = () => async (ctx) => {
         }
 
         if (ctx.from.language_code === 'ru') {
-            i18n.locale('ru');
-            return ctx.replyWithMarkdown(i18n.t('greeting'));
+            ctx.i18n.locale('ru');
+            return ctx.replyWithMarkdown(ctx.i18n.t('greeting'));
         } else {
-            i18n.locale('en');
-            return ctx.replyWithMarkdown(i18n.t('greeting'));
+            ctx.i18n.locale('en');
+            return ctx.replyWithMarkdown(ctx.i18n.t('greeting'));
         }
 
         // ctx.replyWithMarkdown(

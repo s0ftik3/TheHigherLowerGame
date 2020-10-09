@@ -35,6 +35,11 @@ const {
 } = require('./src/commands');
 
 bot.use(i18n.middleware());
+bot.use((ctx) => {
+    ctx.i18n.locale()                    // Get current locale 
+    ctx.i18n.locale(code)                // Set current locale  
+    ctx.i18n.t(resourceKey, [context])   // Get resource value (context will be used by template engine)
+});
 
 // Bot's body
 bot.start(startCommand());
