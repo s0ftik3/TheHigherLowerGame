@@ -2,16 +2,6 @@
 const telegraf = require('telegraf');
 const bot = new telegraf(process.env.TOKEN);
 
-const path = require('path');
-const TelegrafI18n = require('telegraf-i18n');
-const i18n = new TelegrafI18n({
-    defaultLanguage: 'en',
-    allowMissing: false, // Default true
-    directory: path.resolve(__dirname, 'src/locales')
-});
-
-const { Extra } = telegraf;
-
 // Connect database
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DB, {
@@ -19,8 +9,8 @@ mongoose.connect(process.env.DB, {
     useUnifiedTopology: true,
     useCreateIndex: true
 }).then(() => {
-    return console.log('Connected to the database.')
-})
+    return console.log('Connected to the database.');
+});
 
 // Important commands
 const {
@@ -33,13 +23,6 @@ const {
     helpCommand,
     backCommand
 } = require('./src/commands');
-
-bot.use(i18n.middleware());
-bot.use((ctx) => {
-    ctx.i18n.locale()                    // Get current locale 
-    ctx.i18n.locale(code)                // Set current locale  
-    ctx.i18n.t(resourceKey, [context])   // Get resource value (context will be used by template engine)
-});
 
 // Bot's body
 bot.start(startCommand());

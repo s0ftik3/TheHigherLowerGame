@@ -14,23 +14,15 @@ module.exports = () => async (ctx) => {
             user.save();
         }
 
-        if (ctx.from.language_code === 'ru') {
-            ctx.i18n.locale('ru');
-            return ctx.replyWithMarkdown(ctx.i18n.t('greeting'));
-        } else {
-            ctx.i18n.locale('en');
-            return ctx.replyWithMarkdown(ctx.i18n.t('greeting'));
-        }
-
-        // ctx.replyWithMarkdown(
-        //     `👋 Hey there, *${ctx.from.first_name}*!\n\n` + 
-        //     `🎯 *Let's Get Started*\n` +
-        //     `— Tap on *Start the Game* button and enjoy the game. Try to guess a correct option and get +1 score. Your choice is only based on your opinion.`, {
-        //     reply_markup: {
-        //         inline_keyboard: buttons.main,
-        //     },
-        //     parse_mode: 'Markdown',
-        // });
+        ctx.replyWithMarkdown(
+            `👋 Hey there, *${ctx.from.first_name}*!\n\n` + 
+            `🎯 *Let's Get Started*\n` +
+            `— Tap on *Start the Game* button and enjoy the game. Try to guess a correct option and get +1 score. Your choice is only based on your opinion.`, {
+            reply_markup: {
+                inline_keyboard: buttons.main,
+            },
+            parse_mode: 'Markdown',
+        });
 
     } catch (error) {
 

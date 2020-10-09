@@ -1,5 +1,0 @@
-greeting: >
-  👋 Hey there, *${ctx.from.first_name}*!
-
-  🎯 *Let's Get Started*
-  — You have a choice between two most searched things on Google and you have to choose which one people search more.
