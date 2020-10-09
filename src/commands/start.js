@@ -3,7 +3,7 @@ const sendBugReport = require('../scripts/sendBugReport');
 const findUser = require('../scripts/findUser');
 const buttons = require('../config/buttons.json');
 
-module.exports = () => async ({i18n, ctx}) => {
+module.exports = () => async (i18n, ctx) => {
     try {
 
         // Check if there is such a user in database
