@@ -16,6 +16,7 @@
   "dependencies": {
     "mongoose": "^5.10.8",
     "numeral": "^2.0.6",
-    "telegraf": "^3.38.0"
+    "telegraf": "^3.38.0",
+    "telegraf-i18n": "^6.6.0"
   }
 }

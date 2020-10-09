@@ -2,6 +2,16 @@
 const telegraf = require('telegraf');
 const bot = new telegraf(process.env.TOKEN);
 
+const path = require('path');
+const TelegrafI18n = require('telegraf-i18n');
+const i18n = new TelegrafI18n({
+    defaultLanguage: 'en',
+    allowMissing: false, // Default true
+    directory: path.resolve(__dirname, 'locales')
+});
+
+const { Extra } = telegraf;
+
 // Connect database
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DB, {
@@ -23,6 +33,8 @@ const {
     helpCommand,
     backCommand
 } = require('./src/commands');
+
+bot.use(i18n.middleware());
 
 // Bot's body
 bot.start(startCommand());

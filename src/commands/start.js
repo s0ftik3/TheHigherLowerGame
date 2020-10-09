@@ -3,7 +3,7 @@ const sendBugReport = require('../scripts/sendBugReport');
 const findUser = require('../scripts/findUser');
 const buttons = require('../config/buttons.json');
 
-module.exports = () => async (ctx) => {
+module.exports = () => async ({i18n, replyWithMarkdown}) => {
     try {
 
         // Check if there is such a user in database
@@ -14,15 +14,23 @@ module.exports = () => async (ctx) => {
             user.save();
         }
 
-        ctx.replyWithMarkdown(
-            `👋 Hey there, *${ctx.from.first_name}*!\n\n` + 
-            `🎯 *Let's Get Started*\n` +
-            `— Tap on *Start the Game* button and enjoy the game. Try to guess a correct option and get +1 score. Your choice is only based on your opinion.`, {
-            reply_markup: {
-                inline_keyboard: buttons.main,
-            },
-            parse_mode: 'Markdown',
-        });
+        if (ctx.from.language_code === 'ru') {
+            i18n.locale('ru');
+            return replyWithMarkdown(i18n.t('greeting'));
+        } else {
+            i18n.locale('en');
+            return replyWithMarkdown(i18n.t('greeting'));
+        }
+
+        // ctx.replyWithMarkdown(
+        //     `👋 Hey there, *${ctx.from.first_name}*!\n\n` + 
+        //     `🎯 *Let's Get Started*\n` +
+        //     `— Tap on *Start the Game* button and enjoy the game. Try to guess a correct option and get +1 score. Your choice is only based on your opinion.`, {
+        //     reply_markup: {
+        //         inline_keyboard: buttons.main,
+        //     },
+        //     parse_mode: 'Markdown',
+        // });
 
     } catch (error) {
 
