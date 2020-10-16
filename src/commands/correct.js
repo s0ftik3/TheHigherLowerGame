@@ -29,9 +29,13 @@ module.exports = () => (ctx) => {
         User.find({ id: ctx.from.id }).then(user => {
             User.updateOne({ id: ctx.from.id }, { $set: { answers: { correct: user[0].answers.correct + 1, wrong: user[0].answers.wrong  } } }, () => {});
         }).catch(error => {
+            // Delete inline buttons from previous message
+            ctx.editMessageReplyMarkup({ inline_keyboard: [[]] });
+
             // Log error if something happened
             console.error(error);
             sendBugReport(error);
+            
             // Let user know that something went wrong
             ctx.replyWithMarkdown('😵 *Oops... Something went wrong, I can\'t find your profile in our database. Please, try again /start*', { parse_mode: 'Markdown' });
         });
