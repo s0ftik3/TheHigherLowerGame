@@ -9,9 +9,10 @@ module.exports = () => async (ctx) => {
         // Check if there is such a user in database
         let isFound = await findUser(ctx.from.id).then(response => response).catch(error => console.error(error));
         if (!isFound) {
-            const userData = { id: ctx.from.id, username: '@' + ctx.from.username, language: ctx.from.language_code };
-            const user = new User(userData);
-            user.save();
+            // const userData = { id: ctx.from.id, username: '@' + ctx.from.username, language: ctx.from.language_code };
+            // const user = new User(userData);
+            // user.save();
+            ctx.reply('You haven\'t been found in our database.');
         }
 
         ctx.replyWithMarkdown(
