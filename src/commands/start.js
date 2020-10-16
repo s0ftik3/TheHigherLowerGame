@@ -7,13 +7,15 @@ module.exports = () => async (ctx) => {
     try {
 
         // Check if there is such a user in database
-        let isFound = await findUser(ctx.from.id).then(response => response).catch(error => console.error(error));
-        if (!isFound) {
-            // const userData = { id: ctx.from.id, username: '@' + ctx.from.username, language: ctx.from.language_code };
-            // const user = new User(userData);
-            // user.save();
-            ctx.reply('You haven\'t been found in our database.');
-        }
+        await findUser(ctx.from.id).then(response => {
+            if (response) {
+                return;
+            } else {
+                const userData = { id: ctx.from.id, username: '@' + ctx.from.username, language: ctx.from.language_code };
+                const user = new User(userData);
+                user.save();
+            }
+        }).catch(error => console.error(error));
 
         ctx.replyWithMarkdown(
             `👋 Hey there, *${ctx.from.first_name}*!\n\n` + 
