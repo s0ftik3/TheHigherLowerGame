@@ -35,9 +35,9 @@ module.exports = () => (ctx) => {
             // Log error if something happened
             console.error(error);
             sendBugReport(error);
-            
+
             // Let user know that something went wrong
-            ctx.replyWithMarkdown('😵 *Oops... Something went wrong, I can\'t find your profile in our database. Please, try again /start*', { parse_mode: 'Markdown' });
+            ctx.replyWithMarkdown('😵 *Oops... Something went wrong, I can\'t find your profile in our database. Please, try again /start.*', { parse_mode: 'Markdown' });
         });
 
     } catch (error) {
