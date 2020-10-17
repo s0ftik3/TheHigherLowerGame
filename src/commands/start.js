@@ -8,6 +8,7 @@ module.exports = () => async (ctx) => {
 
         // Check if there is such a user in database
         await findUser(ctx.from.id).then(response => {
+            console.log(response);
             if (response) {
                 return;
             } else {
