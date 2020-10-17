@@ -11,7 +11,7 @@ module.exports = () => async (ctx) => {
             if (response) {
                 return;
             } else {
-                const userData = { id: ctx.from.id, username: '@' + ctx.from.username, language: ctx.from.language_code };
+                const userData = { id: (ctx.from.id ?? 'None'), username: '@' + (ctx.from.username ?? 'None'), language: (ctx.from.language_code ?? 'None') };
                 const user = new User(userData);
                 user.save();
             }
