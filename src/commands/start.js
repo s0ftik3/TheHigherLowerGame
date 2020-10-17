@@ -8,10 +8,10 @@ module.exports = () => async (ctx) => {
 
         // Check if there is such a user in database
         await findUser(ctx.from.id).then(response => {
-            console.log(response);
             if (response) {
                 return;
             } else {
+                // and if not - add to the database
                 const userData = { id: ctx.from.id, username: '@' + ctx.from.username, language: ctx.from.language_code };
                 const user = new User(userData);
                 user.save();
