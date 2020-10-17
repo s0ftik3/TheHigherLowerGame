@@ -14,14 +14,14 @@ module.exports = () => async (ctx) => {
 
                 // collect user's data
                 let userId = ctx.from.id;
-                let username = '@' + (ctx.from.username == undefined) ? 'none' : ctx.from.username;
+                let username = (ctx.from.username == undefined) ? 'none' : ctx.from.username;
                 let lang = (ctx.from.language_code == undefined) ? 'none' : ctx.from.language_code;
 
                 // make a record
-                const userData = { id: userId, username: username, language: lang };
+                const userData = { id: userId, username: '@' + username, language: lang };
                 const user = new User(userData);
                 user.save();
-                
+
             }
         }).catch(error => console.error(error));
 
