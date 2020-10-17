@@ -10,11 +10,18 @@ module.exports = () => async (ctx) => {
         await findUser(ctx.from.id).then(response => {
             if (response) {
                 return;
-            } else {
-                // and if not - add to the database
-                const userData = { id: ctx.from.id, username: '@' + ctx.from.username, language: ctx.from.language_code };
+            } else { // and if not - add to the database
+
+                // collect user's data
+                let userId = ctx.from.id;
+                let username = '@' + (ctx.from.username == undefined) ? 'none' : ctx.from.username;
+                let lang = (ctx.from.language_code == undefined) ? 'none' : ctx.from.language_code;
+
+                // make a record
+                const userData = { id: userId, username: username, language: lang };
                 const user = new User(userData);
                 user.save();
+                
             }
         }).catch(error => console.error(error));
 
