@@ -30,8 +30,8 @@ module.exports = () => async (ctx) => {
             reply_markup: {
                 inline_keyboard: [
                     [
-                        { text: '🔼 Higher', callback_data: higherBtn },
-                        { text: '🔽 Lower', callback_data: lowerBtn },
+                        { text: '🔼', callback_data: higherBtn },
+                        { text: '🔽', callback_data: lowerBtn },
                     ],
                 ],
             },
