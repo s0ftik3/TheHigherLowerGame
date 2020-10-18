@@ -37,6 +37,22 @@ module.exports = () => (ctx) => {
 
         ctx.answerCbQuery();
 
+        // Update used number
+        User.find({ id: ctx.from.id }).then(user => {
+            User.updateOne({ id: ctx.from.id }, { $set: { trivia: { correct: user[0].trivia.correct, wrong: user[0].trivia.wrong , used: user[0].trivia.used + 1 } } }, () => {});
+        }).catch(error => {
+            // Delete inline buttons from previous message
+            ctx.editMessageReplyMarkup({ inline_keyboard: [[]] });
+
+            // Log error if something happened
+            console.error(error);
+            sendBugReport(error);
+            
+            // Let user know that something went wrong
+            ctx.replyWithSticker('CAACAgIAAxkBAAEBeChfi9-CbY2kCc0BwOBgbhSEDk_VXQAC8wADVp29Cmob68TH-pb-GwQ');
+            ctx.replyWithMarkdown('😵 *Oops... Something went wrong, I couldn\'t find your profile in our database. Please, try /start again.*', { parse_mode: 'Markdown' });
+        });
+
     } catch (error) {
 
         // Log error if something happened

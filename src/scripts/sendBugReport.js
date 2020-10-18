@@ -10,5 +10,6 @@ module.exports = (error) => {
     let min = date.getMinutes().toString().padStart(2, '0');
 
     let message = `*Name:* ${error.name}\n*Message:* ${error.message}\n*Date:* ${day}/${month}/${year} ${hour}:${min}`;
+    telegram.sendSticker(process.env.ADMIN, 'CAACAgIAAxkBAAEBeINfjFY5UHzYZazgg5ZyNf5UoQ1S3gACTgIAAladvQow_mttgTIDbxsE');
     telegram.sendMessage(process.env.ADMIN, message, { parse_mode: 'Markdown' });
 }

@@ -28,7 +28,7 @@ module.exports = () => (ctx) => {
 
         // Update wrong answers
         User.find({ id: ctx.from.id }).then(user => {
-            User.updateOne({ id: ctx.from.id }, { $set: { answers: { correct: user[0].answers.correct, wrong: user[0].answers.wrong + 1  } } }, () => {});
+            User.updateOne({ id: ctx.from.id }, { $set: { trivia: { correct: user[0].trivia.correct, wrong: user[0].trivia.wrong + 1, used: user[0].trivia.used } } }, () => {});
         }).catch(error => {
             // Delete inline buttons from previous message
             ctx.editMessageReplyMarkup({ inline_keyboard: [[]] });
