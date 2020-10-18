@@ -12,7 +12,7 @@ module.exports = () => (ctx) => {
         // Message text
         let message = `🔵 *${arr[0]}* — _${arr[1]} monthly searches_\n` + 
         `⚪️ *${arr[2]}* — _${arr[3]} monthly searches_\n\n` +
-        `*${arr[2]}* has *${arr[4] > 0 ? `🔽 LOWER` : `🔼 HIGHER`}* searches than *${arr[0]}*, you answered *✅ correct!*`;
+        `*«${arr[2]}»* has *${arr[4] > 0 ? `🔽 LOWER` : `🔼 HIGHER`}* searches than *«${arr[0]}»*, you answered *✅ correct!*`;
 
         // Reply user
         ctx.editMessageText(message, {
