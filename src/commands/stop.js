@@ -6,10 +6,13 @@ module.exports = () => (ctx) => {
 
         ctx.editMessageReplyMarkup({ inline_keyboard: [[]] });
 
+        let greetings = ['Hey there', 'Hello', 'Hi', 'Howdy', 'Hey', 'How\'s going on', 'Sup', 'What\'s up', 'Greetings', 'Welcome'];
+        let i = Math.floor(Math.random() * greetings.length);
+
         ctx.replyWithMarkdown(
-            `👋 Hey there, *${ctx.from.first_name}*!\n\n` + 
+            `👋 ${greetings[i]}, *${ctx.from.first_name}*!\n\n` + 
             `🎯 *Let's Get Started*\n` +
-            `— Tap on *Start the Game* button and enjoy the game. Try to guess a correct option and get +1 score. Your choice is only based on your opinion.`, {
+            `— Tap on *Start the Game* button and try to guess a correct option. Your choice is only based on your opinion.`, {
             reply_markup: {
                 inline_keyboard: buttons.main,
             },
