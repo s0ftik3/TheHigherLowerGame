@@ -18,7 +18,7 @@ module.exports = () => async (ctx) => {
         let lowerBtn = `no_${data}`;
 
         // Message text
-        let message = `🔵 *${gd.first_title}* _(${gd.first_searches} monthly searches)_\n` +
+        let message = `🔵 *${gd.first_title}* — _${gd.first_searches} monthly searches_\n` +
         `⚪️ *${gd.second_title}*\n\n` +
         `*${gd.second_title}* has ❓ searches than *${gd.first_title}.*`;
 

@@ -6,11 +6,12 @@ module.exports = () => (ctx) => {
 
         // Receive and split received data
         let data = ctx.callbackQuery.data.replace(/no_/g, '');
+        // Where 0 - first title, 1 - first volume, 2 - second title, 3 - second volume and 4 - correct option
         let arr = data.split('/');
 
         // Message text
-        let message = `🔵 *${arr[0]}* _(${arr[1]} monthly searches)_\n` +
-        `⚪️ *${arr[2]}* _(${arr[3]} monthly searches)_\n\n` +
+        let message = `🔵 *${arr[0]}* — _${arr[1]} monthly searches_\n` +
+        `⚪️ *${arr[2]}* — _${arr[3]} monthly searches_\n\n` +
         `*${arr[2]}* has *${arr[4] > 0 ? `🔽 LOWER` : `🔼 HIGHER`}* searches than *${arr[0]}*, you answered *❌ wrong!*`;
 
         // Reply user
