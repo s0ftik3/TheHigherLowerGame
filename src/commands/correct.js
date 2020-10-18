@@ -10,7 +10,7 @@ module.exports = () => (ctx) => {
 
         // Message text
         let message = `🔵 *${arr[0]}* _(${arr[1]} monthly searches)_\n` + 
-        `🔴 *${arr[2]}* _(${arr[3]} monthly searches)_\n\n` +
+        `⚪️ *${arr[2]}* _(${arr[3]} monthly searches)_\n\n` +
         `*${arr[2]}* has *${arr[4] > 0 ? `🔽 LOWER` : `🔼 HIGHER`}* searches than *${arr[0]}, you answered ✅ correct!*`;
 
         // Reply user
@@ -37,7 +37,8 @@ module.exports = () => (ctx) => {
             sendBugReport(error);
 
             // Let user know that something went wrong
-            ctx.replyWithMarkdown('😵 *Oops... Something went wrong, I can\'t find your profile in our database. Please, try again /start.*', { parse_mode: 'Markdown' });
+            ctx.replyWithSticker('CAACAgIAAxkBAAEBeChfi9-CbY2kCc0BwOBgbhSEDk_VXQAC8wADVp29Cmob68TH-pb-GwQ');
+            ctx.replyWithMarkdown('😵 *Oops... Something went wrong, I couldn\'t find your profile in our database. Please, try again /start.*', { parse_mode: 'Markdown' });
         });
 
     } catch (error) {
@@ -46,6 +47,7 @@ module.exports = () => (ctx) => {
         console.error(error);
         sendBugReport(error);
         // Let user know that something went wrong
+        ctx.replyWithSticker('CAACAgIAAxkBAAEBeChfi9-CbY2kCc0BwOBgbhSEDk_VXQAC8wADVp29Cmob68TH-pb-GwQ');
         ctx.replyWithMarkdown('😵 *Oops... Something went wrong, please try again /start.*', { parse_mode: 'Markdown' });
 
     };

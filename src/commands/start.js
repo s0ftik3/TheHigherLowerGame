@@ -41,6 +41,7 @@ module.exports = () => async (ctx) => {
         console.error(error);
         sendBugReport(error);
         // Let user know that something went wrong
+        ctx.replyWithSticker('CAACAgIAAxkBAAEBeChfi9-CbY2kCc0BwOBgbhSEDk_VXQAC8wADVp29Cmob68TH-pb-GwQ');
         ctx.replyWithMarkdown('😵 *Oops... Something went wrong, please try again /start.*', { parse_mode: 'Markdown' });
 
     };

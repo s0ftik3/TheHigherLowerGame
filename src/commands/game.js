@@ -16,7 +16,7 @@ module.exports = () => (ctx) => {
 
         // Message text
         let message = `🔵 *${gd.first_title}* _(${gd.first_searches} monthly searches)_\n` +
-        `🔴 *${gd.second_title}*\n\n` +
+        `⚪️ *${gd.second_title}*\n\n` +
         `*${gd.second_title}* has ❓ searches than *${gd.first_title}.*`;
 
         // Find correct option and make correct button correct again
@@ -43,6 +43,7 @@ module.exports = () => (ctx) => {
         console.error(error);
         sendBugReport(error);
         // Let user know that something went wrong
+        ctx.replyWithSticker('CAACAgIAAxkBAAEBeChfi9-CbY2kCc0BwOBgbhSEDk_VXQAC8wADVp29Cmob68TH-pb-GwQ');
         ctx.replyWithMarkdown('😵 *Oops... Something went wrong, please try again /start.*', { parse_mode: 'Markdown' });
 
     };
