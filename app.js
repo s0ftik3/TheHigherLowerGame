@@ -43,7 +43,8 @@ bot.on('callback_query', (ctx) => ctx.answerCbQuery());
 // Indicates that the bot has been started
 bot.telegram.getMe().then((bot) => {
     console.log(`${bot.first_name} bot has been started. Enjoy!`);
-    telegram.sendMessage(process.env.ADMIN, `*${bot.first_name}* bot has been started. Enjoy!`, { parse_mode: 'Markdown' });
+    telegram.sendSticker(process.env.ADMIN, 'CAACAgIAAxkBAAEBeIFfjFTcuk_U3i39MPFG9rtwmZOmGQACAQEAAladvQoivp8OuMLmNBsE');
+    telegram.sendMessage(process.env.ADMIN, `🤩 *${bot.first_name}* bot has been started. Enjoy!`, { parse_mode: 'Markdown' });
 });
 
 // Start the bot
