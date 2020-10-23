@@ -40,7 +40,7 @@ bot.action('help', helpCommand());
 bot.action('back', backCommand());
 bot.action(/yes-*\w+/, correctCommand());
 bot.action(/no-*\w+/, wrongCommand());
-bot.action('vanilla', vanillaCommand());
+bot.action('vanilla', (ctx) => ctx.answerCbQuery('😰 Unavailable now.')); // vanillaCommand()
 bot.action(/vup-*\w+/, vanillaCorrectCommand());
 bot.action(/vdown-*\w+/, vanillaWrongCommand());
 bot.action('vcancel', vanillaCancelCommand());
