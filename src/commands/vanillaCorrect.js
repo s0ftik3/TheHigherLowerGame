@@ -6,7 +6,7 @@ module.exports = () => (ctx) => {
     try {
 
         // Receive and split received data
-        let arrData = ctx.callbackQuery.data.replace(/vyes_/g, '');
+        let arrData = ctx.callbackQuery.data.replace(/vup_/g, '');
         // Where 0 - first title, 1 - first volume, 2 - second title, 3 - second volume and 4 - correct option
         let arr = arrData.split('/');
 
@@ -16,8 +16,8 @@ module.exports = () => (ctx) => {
         let data = `${gd.first_title}/${gd.first_searches}/${gd.second_title}/${gd.second_searches}/${gd.correct}/` + (Number(arr[5]) + 1);
 
         // Inline buttons (Yes or No, means it's either correct or wrong button)
-        let higherBtn = `vno_${data}`;
-        let lowerBtn = `vno_${data}`;
+        let higherBtn = `vdown_${data}`;
+        let lowerBtn = `vdown_${data}`;
 
         // Message text
         let message = `🔵 *${gd.first_title}* — _${gd.first_searches} monthly searches_\n` +
@@ -26,7 +26,7 @@ module.exports = () => (ctx) => {
         `Your score: ${Number(arr[5]) + 1}`;
 
         // Find correct option and make correct button correct again
-        (gd.correct === 0) ? higherBtn = `vyes_${data}` : lowerBtn = `vyes_${data}`;
+        (gd.correct === 0) ? higherBtn = `vup_${data}` : lowerBtn = `vup_${data}`;
 
         // Reply user
         ctx.editMessageText(message, {

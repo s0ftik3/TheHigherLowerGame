@@ -41,8 +41,8 @@ bot.action('back', backCommand());
 bot.action(/yes-*\w+/, correctCommand());
 bot.action(/no-*\w+/, wrongCommand());
 bot.action('vanilla', vanillaCommand());
-bot.action(/vyes-*\w+/, vanillaCorrectCommand());
-bot.action(/vno-*\w+/, vanillaWrongCommand());
+bot.action(/vup-*\w+/, vanillaCorrectCommand());
+bot.action(/vdown-*\w+/, vanillaWrongCommand());
 bot.action('vcancel', vanillaCancelCommand());
 
 // Solves the problem with stucked loader next to the inline buttons
