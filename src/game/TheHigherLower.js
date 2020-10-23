@@ -53,7 +53,7 @@ class TheHigherLowerGame {
         return this.collectData();
         
     }
-
+    
 }
 
 module.exports = TheHigherLowerGame;

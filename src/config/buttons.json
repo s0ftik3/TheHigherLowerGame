@@ -1,6 +1,6 @@
 {
     "main": [
-        [{ "text": "🎯 Start the Game", "callback_data": "start" }]
+        [{ "text": "🎲 Vanilla", "callback_data": "vanilla" },{ "text": "🎯 Trivia", "callback_data": "start" }]
     ],
     "help": [
         [{ "text": "💌 Report a Bug", "url": "https://t.me/id160" }, { "text": "🛠 Developer's Channel", "url": "https://t.me/softikjs" }],

@@ -6,6 +6,10 @@ const wrongCommand = require('./wrong');
 const stopCommand = require('./stop');
 const helpCommand = require('./help');
 const backCommand = require('./back');
+const vanillaCommand = require('./vanilla');
+const vanillaCorrectCommand = require('./vanillaCorrect');
+const vanillaWrongCommand = require('./vanillaWrong');
+const vanillaCancelCommand = require('./vanillaCancel');
 
 module.exports = {
     startCommand,
@@ -15,5 +19,9 @@ module.exports = {
     wrongCommand,
     stopCommand,
     helpCommand,
-    backCommand
+    backCommand,
+    vanillaCommand,
+    vanillaCorrectCommand,
+    vanillaWrongCommand,
+    vanillaCancelCommand
 }

@@ -31,7 +31,7 @@ module.exports = () => async (ctx) => {
         ctx.replyWithMarkdown(
             `👋 ${greetings[i]}, *${ctx.from.first_name}*!\n\n` + 
             `🎯 *Let's Get Started*\n` +
-            `— Tap on *Start the Game* button and try to guess a correct option. Your choice is only based on your opinion.`, {
+            `— Choose a game mode and try to guess a correct option. Your choice is only based on your opinion.`, {
             reply_markup: {
                 inline_keyboard: buttons.main,
             },

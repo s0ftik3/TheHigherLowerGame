@@ -23,7 +23,11 @@ const {
     wrongCommand,
     stopCommand,
     helpCommand,
-    backCommand
+    backCommand,
+    vanillaCommand,
+    vanillaCorrectCommand,
+    vanillaWrongCommand,
+    vanillaCancelCommand
 } = require('./src/commands');
 
 // Bot's body
@@ -36,6 +40,10 @@ bot.action('help', helpCommand());
 bot.action('back', backCommand());
 bot.action(/yes-*\w+/, correctCommand());
 bot.action(/no-*\w+/, wrongCommand());
+bot.action('vanilla', vanillaCommand());
+bot.action(/vyes-*\w+/, vanillaCorrectCommand());
+bot.action(/vno-*\w+/, vanillaWrongCommand());
+bot.action('vcancel', vanillaCancelCommand());
 
 // Solves the problem with stucked loader next to the inline buttons
 bot.on('callback_query', (ctx) => ctx.answerCbQuery());

@@ -4,12 +4,10 @@ const sendBugReport = require('../scripts/sendBugReport');
 module.exports = () => (ctx) => {
     try {
 
-        ctx.editMessageReplyMarkup({ inline_keyboard: [[]] });
-
         let greetings = ['Hey there', 'Hello', 'Hi', 'Howdy', 'Hey', 'How\'s going on', 'Sup', 'What\'s up', 'Greetings', 'Welcome'];
         let i = Math.floor(Math.random() * greetings.length);
 
-        ctx.replyWithMarkdown(
+        ctx.editMessageText(
             `👋 ${greetings[i]}, *${ctx.from.first_name}*!\n\n` + 
             `🎯 *Let's Get Started*\n` +
             `— Choose a game mode and try to guess a correct option. Your choice is only based on your opinion.`, {
