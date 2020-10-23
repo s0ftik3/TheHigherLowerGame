@@ -13,7 +13,7 @@ module.exports = () => (ctx) => {
         let message = `🔵 *${arr[0]}* — _${arr[1]} monthly searches_\n` +
         `⚪️ *${arr[2]}* — _${arr[3]} monthly searches_\n\n` +
         `*«${arr[2]}»* has *${arr[4] > 0 ? `🔽 LOWER` : `🔼 HIGHER`}* searches than *«${arr[0]}»*.\n\n` +
-        `Game Over! Your score: ${arr[5]}`;
+        `💩 *Game Over! Your score: ${arr[5]}*`;
 
         // Reply user
         ctx.editMessageText(message, {
@@ -29,7 +29,7 @@ module.exports = () => (ctx) => {
 
         // Update wrong answers
         User.find({ id: ctx.from.id }).then(user => {
-            User.updateOne({ id: ctx.from.id }, { $set: { vanilla: { maxScore: Number(arr[5]), used: user[0].vanilla.used } } }, () => {});
+            User.updateOne({ id: ctx.from.id }, { $set: { vanilla: { maxScore: (Number(arr[5]) >= user[0].vanilla.maxScore) ? Number(arr[5]) : user[0].vanilla.maxScore, used: user[0].vanilla.used } } }, () => {});
         }).catch(error => {
             // Delete inline buttons from previous message
             ctx.editMessageReplyMarkup({ inline_keyboard: [[]] });

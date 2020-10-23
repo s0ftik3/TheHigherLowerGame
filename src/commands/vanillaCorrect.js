@@ -23,7 +23,7 @@ module.exports = () => (ctx) => {
         let message = `🔵 *${gd.first_title}* — _${gd.first_searches} monthly searches_\n` +
         `⚪️ *${gd.second_title}*\n\n` +
         `*«${gd.second_title}»* has ❓ searches than *«${gd.first_title}»*.\n\n` +
-        `Your score: ${Number(arr[5]) + 1}`;
+        `🧮 *Your score: ${Number(arr[5]) + 1}*`;
 
         // Find correct option and make correct button correct again
         (gd.correct === 0) ? higherBtn = `vup_${data}` : lowerBtn = `vup_${data}`;
