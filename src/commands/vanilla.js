@@ -35,7 +35,7 @@ module.exports = () => (ctx) => {
             parse_mode: 'Markdown',
         });
 
-        ctx.answerCbQuery();
+        ctx.answerCbQuery('Vanilla');
 
     } catch (error) {
 
