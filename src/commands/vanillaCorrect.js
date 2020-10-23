@@ -6,9 +6,9 @@ module.exports = () => (ctx) => {
     try {
 
         // Receive and split received data
-        let data = ctx.callbackQuery.data.replace(/vyes_/g, '');
+        let arrData = ctx.callbackQuery.data.replace(/vyes_/g, '');
         // Where 0 - first title, 1 - first volume, 2 - second title, 3 - second volume and 4 - correct option
-        let arr = data.split('/');
+        let arr = arrData.split('/');
 
         // Game Data. Shorted in order to take less characters for inline buttons' callbacks
         let gd = game.start();
