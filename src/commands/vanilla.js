@@ -35,7 +35,23 @@ module.exports = () => (ctx) => {
             parse_mode: 'Markdown',
         });
 
-        ctx.answerCbQuery('Vanilla');
+        ctx.answerCbQuery();
+
+        // Update used number
+        User.find({ id: ctx.from.id }).then(user => {
+            User.updateOne({ id: ctx.from.id }, { $set: { vanilla: { maxScore: user[0].vanilla.maxScore, used: user[0].vanilla.used + 1 } } }, () => {});
+        }).catch(error => {
+            // Delete inline buttons from previous message
+            ctx.editMessageReplyMarkup({ inline_keyboard: [[]] });
+
+            // Log error if something happened
+            console.error(error);
+            sendBugReport(error);
+            
+            // Let user know that something went wrong
+            ctx.replyWithSticker('CAACAgIAAxkBAAEBeChfi9-CbY2kCc0BwOBgbhSEDk_VXQAC8wADVp29Cmob68TH-pb-GwQ');
+            ctx.replyWithMarkdown('😵 *Oops... Something went wrong, I couldn\'t find your profile in our database. Please, try /start again.*', { parse_mode: 'Markdown' });
+        });
 
     } catch (error) {
 
