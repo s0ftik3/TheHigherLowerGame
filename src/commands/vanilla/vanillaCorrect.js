@@ -1,6 +1,7 @@
 const TheHigerLowerGame = require('../../game/TheHigherLower');
 const game = new TheHigerLowerGame();
 const sendBugReport = require('../../scripts/sendBugReport');
+const numeral = require('numeral');
 
 module.exports = () => (ctx) => {
     try {
@@ -26,9 +27,9 @@ module.exports = () => (ctx) => {
         `*«${gd.second_title}»* has ❓ searches than *«${arr[2]}»*.\n\n`;
 
         // Find correct option and make correct button correct again
-        (arr[3] < gd.second_searches) ? higherBtn = `vaYes_${data}` : lowerBtn = `vaYes_${data}`;
+        (numeral(arr[3]) < numeral(gd.second_searches)) ? higherBtn = `vaYes_${data}` : lowerBtn = `vaYes_${data}`;
 
-        console.log(`${arr[3]} < ${gd.second_searches} = ${arr[3] < gd.second_searches}`);
+        console.log(`${numeral(arr[3])} < ${numeral(gd.second_searches)} = ${numeral(arr[3]) < numeral(gd.second_searches)}`);
 
         console.log(higherBtn);
         console.log(lowerBtn);
