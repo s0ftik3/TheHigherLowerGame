@@ -26,9 +26,9 @@ module.exports = () => (ctx) => {
         `*«${gd.second_title}»* has ❓ searches than *«${arr[2]}»*.\n\n`;
 
         // Find correct option and make correct button correct again
-        (Number(arr[3]) < Number(gd.second_searches)) ? higherBtn = `vaYes_${data}` : lowerBtn = `vaYes_${data}`;
+        (arr[3] < gd.second_searches) ? higherBtn = `vaYes_${data}` : lowerBtn = `vaYes_${data}`;
 
-        console.log(`${Number(arr[3])} < ${Number(gd.second_searches)} = ${Number(arr[3]) < Number(gd.second_searches)}`);
+        console.log(`${arr[3]} < ${gd.second_searches} = ${arr[3] < gd.second_searches}`);
 
         console.log(higherBtn);
         console.log(lowerBtn);
