@@ -1,5 +1,5 @@
-const buttons = require('../config/buttons.json');
-const sendBugReport = require('../scripts/sendBugReport');
+const buttons = require('../../config/buttons.json');
+const sendBugReport = require('../../scripts/sendBugReport');
 
 module.exports = () => (ctx) => {
     try {

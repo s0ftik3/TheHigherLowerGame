@@ -1,5 +1,5 @@
-const User = require('../models/User');
-const sendBugReport = require('../scripts/sendBugReport');
+const User = require('../../models/User');
+const sendBugReport = require('../../scripts/sendBugReport');
 
 module.exports = () => (ctx) => {
     try {
