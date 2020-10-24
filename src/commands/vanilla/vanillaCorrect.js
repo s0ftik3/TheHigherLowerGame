@@ -23,10 +23,15 @@ module.exports = () => (ctx) => {
         let message = `🧮 *Your score —* _${Number(arr[5]) + 1}_\n\n` +
         `🔵 *${arr[2]}* — _${arr[3]} monthly searches_\n` +
         `⚪️ *${gd.second_title}*\n\n` +
-        `*«${gd.second_title}»* has ❓ searches than *«${gd.first_title}»*.\n\n`;
+        `*«${gd.second_title}»* has ❓ searches than *«${arr[2]}»*.\n\n`;
 
         // Find correct option and make correct button correct again
         (Number(arr[3]) < Number(gd.second_searches)) ? higherBtn = `vaYes_${data}` : lowerBtn = `vaYes_${data}`;
+
+        console.log(`${Number(arr[3])} < ${Number(gd.second_searches)} = ${Number(arr[3]) < Number(gd.second_searches)}`);
+
+        console.log(higherBtn);
+        console.log(lowerBtn);
 
         // Reply user
         ctx.editMessageText(message, {
