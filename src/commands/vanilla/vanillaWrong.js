@@ -5,7 +5,7 @@ module.exports = () => (ctx) => {
     try {
 
         // Receive and split received data
-        let data = ctx.callbackQuery.data.replace(/vdown_/g, '');
+        let data = ctx.callbackQuery.data.replace(/vaNo_/g, '');
         // Where 0 - first title, 1 - first volume, 2 - second title, 3 - second volume and 4 - correct option
         let arr = data.split('/');
 
