@@ -28,15 +28,9 @@ module.exports = () => (ctx) => {
 
         let a = numeral(arr[3]);
         let b = numeral(gd.second_searches);
-        console.log(a);
 
         // Find correct option and make correct button correct again
-        (a < b) ? higherBtn = `vaYes_${data}` : lowerBtn = `vaYes_${data}`;
-
-        console.log(`${a} < ${b} = ${a < b}`);
-
-        console.log(higherBtn);
-        console.log(lowerBtn);
+        (a._value < b._value) ? higherBtn = `vaYes_${data}` : lowerBtn = `vaYes_${data}`;
 
         // Reply user
         ctx.editMessageText(message, {
