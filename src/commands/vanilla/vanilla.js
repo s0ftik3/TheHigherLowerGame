@@ -1,7 +1,7 @@
-const TheHigerLowerGame = require('../game/TheHigherLower');
+const TheHigerLowerGame = require('../../game/TheHigherLower');
 const game = new TheHigerLowerGame();
-const sendBugReport = require('../scripts/sendBugReport');
-const User = require('../models/User');
+const sendBugReport = require('../../scripts/sendBugReport');
+const User = require('../../models/User');
 
 module.exports = () => (ctx) => {
     try {

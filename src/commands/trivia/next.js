@@ -14,8 +14,8 @@ module.exports = () => async (ctx) => {
         let data = `${gd.first_title}/${gd.first_searches}/${gd.second_title}/${gd.second_searches}/${gd.correct}`;
 
         // Inline buttons (Yes or No, means it's either correct or wrong button)
-        let higherBtn = `no_${data}`;
-        let lowerBtn = `no_${data}`;
+        let higherBtn = `trNo_${data}`;
+        let lowerBtn = `trNo_${data}`;
 
         // Message text
         let message = `🔵 *${gd.first_title}* — _${gd.first_searches} monthly searches_\n` +
@@ -23,7 +23,7 @@ module.exports = () => async (ctx) => {
         `*«${gd.second_title}»* has ❓ searches than *«${gd.first_title}»*.`;
 
         // Find correct option and make correct button correct again
-        (gd.correct === 0) ? higherBtn = `yes_${data}` : lowerBtn = `yes_${data}`;
+        (gd.correct === 0) ? higherBtn = `trYes_${data}` : lowerBtn = `trYes_${data}`;
 
         // The bot's message
         ctx.replyWithMarkdown(message, {

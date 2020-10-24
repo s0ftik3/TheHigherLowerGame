@@ -1,15 +1,15 @@
 const startCommand = require('./start');
-const gameCommand = require('./game');
-const nextCommand = require('./next');
-const correctCommand = require('./correct');
-const wrongCommand = require('./wrong');
-const stopCommand = require('./stop');
+const gameCommand = require('./trivia/game');
+const nextCommand = require('./trivia/next');
+const correctCommand = require('./trivia/correct');
+const wrongCommand = require('./trivia/wrong');
+const stopCommand = require('./trivia/stop');
 const helpCommand = require('./help');
-const backCommand = require('./back');
-const vanillaCommand = require('./vanilla');
-const vanillaCorrectCommand = require('./vanillaCorrect');
-const vanillaWrongCommand = require('./vanillaWrong');
-const vanillaCancelCommand = require('./vanillaCancel');
+const backCommand = require('./vanilla/back');
+const vanillaCommand = require('./vanilla/vanilla');
+const vanillaCorrectCommand = require('./vanilla/vanillaCorrect');
+const vanillaWrongCommand = require('./vanilla/vanillaWrong');
+const vanillaCancelCommand = require('./vanilla/vanillaCancel');
 
 module.exports = {
     startCommand,

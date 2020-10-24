@@ -4,6 +4,9 @@ const bot = new telegraf(process.env.TOKEN);
 const Telegram = require('telegraf/telegram');
 const telegram = new Telegram(process.env.TOKEN);
 
+// Other functions
+const notifyAdmin = require('./src/scripts/notifyAdmin');
+
 // Connect database
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DB, {
@@ -38,12 +41,12 @@ bot.action('next', nextCommand());
 bot.action('cancel', stopCommand());
 bot.action('help', helpCommand());
 bot.action('back', backCommand());
-bot.action(/yes-*\w+/, correctCommand());
-bot.action(/no-*\w+/, wrongCommand());
-bot.action('vanilla', (ctx) => ctx.answerCbQuery('😰 Unavailable now.')); // vanillaCommand()
-bot.action(/vup-*\w+/, vanillaCorrectCommand());
-bot.action(/vdown-*\w+/, vanillaWrongCommand());
-bot.action('vcancel', vanillaCancelCommand());
+bot.action(/trYes-*\w+/, correctCommand());
+bot.action(/trNo-*\w+/, wrongCommand());
+bot.action('vanilla', vanillaCommand());
+bot.action(/vaYes-*\w+/, vanillaCorrectCommand());
+bot.action(/vaNo-*\w+/, vanillaWrongCommand());
+bot.action('vaCancel', vanillaCancelCommand());
 
 // Solves the problem with stucked loader next to the inline buttons
 bot.on('callback_query', (ctx) => ctx.answerCbQuery());
@@ -51,8 +54,7 @@ bot.on('callback_query', (ctx) => ctx.answerCbQuery());
 // Indicates that the bot has been started
 bot.telegram.getMe().then((bot) => {
     console.log(`${bot.first_name} bot has been started. Enjoy!`);
-    telegram.sendSticker(process.env.ADMIN, 'CAACAgIAAxkBAAEBeIFfjFTcuk_U3i39MPFG9rtwmZOmGQACAQEAAladvQoivp8OuMLmNBsE');
-    telegram.sendMessage(process.env.ADMIN, `🤩 *${bot.first_name}* bot has been started. Enjoy!`, { parse_mode: 'Markdown' });
+    notifyAdmin();
 });
 
 // Start the bot

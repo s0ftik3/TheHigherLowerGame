@@ -1,25 +1,24 @@
-const User = require('../models/User');
-const sendBugReport = require('../scripts/sendBugReport');
+const User = require('../../models/User');
+const sendBugReport = require('../../scripts/sendBugReport');
 
 module.exports = () => (ctx) => {
     try {
 
         // Receive and split received data
-        let data = ctx.callbackQuery.data.replace(/vdown_/g, '');
+        let data = ctx.callbackQuery.data.replace(/trNo_/g, '');
         // Where 0 - first title, 1 - first volume, 2 - second title, 3 - second volume and 4 - correct option
         let arr = data.split('/');
 
         // Message text
         let message = `🔵 *${arr[0]}* — _${arr[1]} monthly searches_\n` +
         `⚪️ *${arr[2]}* — _${arr[3]} monthly searches_\n\n` +
-        `*«${arr[2]}»* has *${arr[4] > 0 ? `🔽 LOWER` : `🔼 HIGHER`}* searches than *«${arr[0]}»*.\n\n` +
-        `💩 *Game Over! Your score —* _${arr[5]}_`;
+        `*«${arr[2]}»* has *${arr[4] > 0 ? `🔽 LOWER` : `🔼 HIGHER`}* searches than *«${arr[0]}»*, you answered *❌ wrong!*`;
 
         // Reply user
         ctx.editMessageText(message, {
             reply_markup: {
                 inline_keyboard: [
-                    [{ text: '⬅️ Menu', callback_data: 'vcancel' }]
+                    [{ text: '⬅️ Menu', callback_data: 'cancel' },{ text: 'Next ➡️', callback_data: 'next' }]
                 ],
             }, parse_mode: 'Markdown'
         })
@@ -29,7 +28,7 @@ module.exports = () => (ctx) => {
 
         // Update wrong answers
         User.find({ id: ctx.from.id }).then(user => {
-            User.updateOne({ id: ctx.from.id }, { $set: { vanilla: { maxScore: (Number(arr[5]) >= user[0].vanilla.maxScore) ? Number(arr[5]) : user[0].vanilla.maxScore, used: user[0].vanilla.used } } }, () => {});
+            User.updateOne({ id: ctx.from.id }, { $set: { trivia: { correct: user[0].trivia.correct, wrong: user[0].trivia.wrong + 1, used: user[0].trivia.used } } }, () => {});
         }).catch(error => {
             // Delete inline buttons from previous message
             ctx.editMessageReplyMarkup({ inline_keyboard: [[]] });
