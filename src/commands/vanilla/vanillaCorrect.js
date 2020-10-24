@@ -26,10 +26,13 @@ module.exports = () => (ctx) => {
         `⚪️ *${gd.second_title}*\n\n` +
         `*«${gd.second_title}»* has ❓ searches than *«${arr[2]}»*.\n\n`;
 
-        // Find correct option and make correct button correct again
-        (numeral(arr[3]) < numeral(gd.second_searches)) ? higherBtn = `vaYes_${data}` : lowerBtn = `vaYes_${data}`;
+        let a = numeral(arr[3]);
+        let b = numeral(gd.second_searches);
 
-        console.log(`${numeral(arr[3])} < ${numeral(gd.second_searches)} = ${numeral(arr[3]) < numeral(gd.second_searches)}`);
+        // Find correct option and make correct button correct again
+        (a < b) ? higherBtn = `vaYes_${data}` : lowerBtn = `vaYes_${data}`;
+
+        console.log(`${a} < ${b} = ${a < b}`);
 
         console.log(higherBtn);
         console.log(lowerBtn);
