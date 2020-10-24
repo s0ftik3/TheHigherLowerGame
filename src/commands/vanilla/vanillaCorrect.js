@@ -26,7 +26,7 @@ module.exports = () => (ctx) => {
         `*«${gd.second_title}»* has ❓ searches than *«${gd.first_title}»*.\n\n`;
 
         // Find correct option and make correct button correct again
-        (arr[3] > gd.second_searches) ? higherBtn = `vaYes_${data}` : lowerBtn = `vaYes_${data}`;
+        (Number(arr[3]) < Number(gd.second_searches)) ? higherBtn = `vaYes_${data}` : lowerBtn = `vaYes_${data}`;
 
         // Reply user
         ctx.editMessageText(message, {
