@@ -13,20 +13,20 @@ module.exports = () => (ctx) => {
         // Game Data. Shorted in order to take less characters for inline buttons' callbacks
         let gd = game.start();
         // Structured data for callbacks
-        let data = `${gd.first_title}/${gd.first_searches}/${gd.second_title}/${gd.second_searches}/${gd.correct}/` + (Number(arr[5]) + 1);
+        let data = `${arr[2]}/${arr[3]}/${gd.second_title}/${gd.second_searches}/${gd.correct}/` + (Number(arr[5]) + 1);
 
         // Inline buttons (Yes or No, means it's either correct or wrong button)
         let higherBtn = `vaNo_${data}`;
         let lowerBtn = `vaNo_${data}`;
 
         // Message text
-        let message = `🔵 *${gd.first_title}* — _${gd.first_searches} monthly searches_\n` +
+        let message = `🧮 *Your score —* _${Number(arr[5]) + 1}_` +
+        `🔵 *${arr[2]}* — _${arr[3]} monthly searches_\n` +
         `⚪️ *${gd.second_title}*\n\n` +
-        `*«${gd.second_title}»* has ❓ searches than *«${gd.first_title}»*.\n\n` +
-        `🧮 *Your score —* _${Number(arr[5]) + 1}_`;
+        `*«${gd.second_title}»* has ❓ searches than *«${gd.first_title}»*.\n\n`;
 
         // Find correct option and make correct button correct again
-        (gd.correct === 0) ? higherBtn = `vaYes_${data}` : lowerBtn = `vaYes_${data}`;
+        (arr[3] < gd.second_searches) ? higherBtn = `vaYes_${data}` : lowerBtn = `vaYes_${data}`;
 
         // Reply user
         ctx.editMessageText(message, {
