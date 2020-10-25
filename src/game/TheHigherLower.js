@@ -53,6 +53,30 @@ class TheHigherLowerGame {
         return this.collectData();
         
     }
+
+    vanillaCollectData(pre_title, pre_searches) {
+
+        // Generate two random numbers
+        let i = Math.floor(Math.random() * data.length);
+
+        // Check if two trends have the same volume
+        if (this.checkEqualness(numeral(pre_searches)._value, data[i].searchVolume)) {
+            return this.vanillaCollectData(pre_title, pre_searches);
+        };
+
+        // Collect all data into one object
+        let result = {
+            first_title: pre_title,
+            first_searches: pre_searches,
+            second_title: removeBugSymbols(data[i].keyword),
+            second_searches: numeral(data[i].searchVolume).format('0.0a'),
+            correct: (numeral(pre_searches)._value > data[i].searchVolume) ? 1 : 0
+        };
+
+        // Return data
+        return result;
+
+    }
     
 }
 

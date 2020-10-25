@@ -1,6 +1,5 @@
 const User = require('../../models/User');
 const sendBugReport = require('../../scripts/sendBugReport');
-const numeral = require('numeral');
 
 module.exports = () => (ctx) => {
     try {
@@ -10,14 +9,11 @@ module.exports = () => (ctx) => {
         // Where 0 - first title, 1 - first volume, 2 - second title, 3 - second volume and 4 - correct option
         let arr = data.split('/');
 
-        let a = numeral(arr[1]);
-        let b = numeral(arr[3]);
-
         // Message text
         let message = `💩 *Game Over! ⭐️ Score —* _${arr[5]}_\n\n` +
         `🔵 *${arr[0]}* — _${arr[1]} monthly searches_\n` +
         `⚪️ *${arr[2]}* — _${arr[3]} monthly searches_\n\n` +
-        `*«${arr[2]}»* has *${a._value > b._value ? `🔽 LOWER` : `🔼 HIGHER`}* searches than *«${arr[0]}»*.\n\n`;
+        `*«${arr[2]}»* has *${arr[4] > 0 ? `🔽 LOWER` : `🔼 HIGHER`}* searches than *«${arr[0]}»*.\n\n`;
 
         // Reply user
         ctx.editMessageText(message, {

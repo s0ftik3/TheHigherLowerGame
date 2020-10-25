@@ -1,7 +1,6 @@
 const TheHigerLowerGame = require('../../game/TheHigherLower');
 const game = new TheHigerLowerGame();
 const sendBugReport = require('../../scripts/sendBugReport');
-const numeral = require('numeral');
 
 module.exports = () => (ctx) => {
     try {
@@ -12,9 +11,9 @@ module.exports = () => (ctx) => {
         let arr = arrData.split('/');
 
         // Game Data. Shorted in order to take less characters for inline buttons' callbacks
-        let gd = game.start();
+        let gd = game.vanillaCollectData(arr[2], arr[3]);
         // Structured data for callbacks
-        let data = `${arr[2]}/${arr[3]}/${gd.second_title}/${gd.second_searches}/${gd.correct}/` + (Number(arr[5]) + 1);
+        let data = `${gd.first_title}/${gd.first_searches}/${gd.second_title}/${gd.second_searches}/${gd.correct}/` + (Number(arr[5]) + 1);
 
         // Inline buttons (Yes or No, means it's either correct or wrong button)
         let higherBtn = `vaNo_${data}`;
@@ -22,15 +21,12 @@ module.exports = () => (ctx) => {
 
         // Message text
         let message = `⭐️ *Score —* _${Number(arr[5]) + 1}_\n\n` +
-        `🔵 *${arr[2]}* — _${arr[3]} monthly searches_\n` +
+        `🔵 *${gd.first_title}* — _${gd.first_searches} monthly searches_\n` +
         `⚪️ *${gd.second_title}*\n\n` +
         `*«${gd.second_title}»* has ❓ searches than *«${arr[2]}»*.\n\n`;
 
-        let a = numeral(arr[3]);
-        let b = numeral(gd.second_searches);
-
         // Find correct option and make correct button correct again
-        (a._value < b._value) ? higherBtn = `vaYes_${data}` : lowerBtn = `vaYes_${data}`;
+        (gd.correct === 0) ? higherBtn = `vaYes_${data}` : lowerBtn = `vaYes_${data}`;
 
         // Reply user
         ctx.editMessageText(message, {
@@ -42,7 +38,7 @@ module.exports = () => (ctx) => {
                     ],
                 ],
             }, parse_mode: 'Markdown'
-        })
+        });
     
         // Notify user
         ctx.answerCbQuery('✅ Your answered correct!');

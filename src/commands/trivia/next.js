@@ -5,9 +5,6 @@ const sendBugReport = require('../../scripts/sendBugReport');
 module.exports = () => async (ctx) => {
     try {
 
-        // Delete inline buttons from previous message
-        ctx.editMessageReplyMarkup({ inline_keyboard: [[]] });
-
         // Game Data. Shorted in order to take less characters for inline buttons' callbacks
         let gd = game.start();
         // Structured data for callbacks
@@ -26,7 +23,7 @@ module.exports = () => async (ctx) => {
         (gd.correct === 0) ? higherBtn = `trYes_${data}` : lowerBtn = `trYes_${data}`;
 
         // The bot's message
-        ctx.replyWithMarkdown(message, {
+        ctx.editMessageText(message, {
             reply_markup: {
                 inline_keyboard: [
                     [
