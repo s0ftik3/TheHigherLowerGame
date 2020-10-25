@@ -21,7 +21,7 @@ module.exports = () => (ctx) => {
         let lowerBtn = `vaNo_${data}`;
 
         // Message text
-        let message = `🧮 *Your score —* _${Number(arr[5]) + 1}_\n\n` +
+        let message = `⭐️ *Score —* _${Number(arr[5]) + 1}_\n\n` +
         `🔵 *${arr[2]}* — _${arr[3]} monthly searches_\n` +
         `⚪️ *${gd.second_title}*\n\n` +
         `*«${gd.second_title}»* has ❓ searches than *«${arr[2]}»*.\n\n`;
