@@ -1,5 +1,6 @@
 const User = require('../../models/User');
 const sendBugReport = require('../../scripts/sendBugReport');
+const numeral = require('numeral');
 
 module.exports = () => (ctx) => {
     try {
