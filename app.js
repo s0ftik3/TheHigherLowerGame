@@ -4,9 +4,6 @@ const bot = new telegraf(process.env.TOKEN);
 const Telegram = require('telegraf/telegram');
 const telegram = new Telegram(process.env.TOKEN);
 
-// Other functions
-const notifyAdmin = require('./src/scripts/notifyAdmin');
-
 // Connect database
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DB, {
@@ -54,7 +51,6 @@ bot.on('callback_query', (ctx) => ctx.answerCbQuery());
 // Indicates that the bot has been started
 bot.telegram.getMe().then((bot) => {
     console.log(`${bot.first_name} bot has been started. Enjoy!`);
-    notifyAdmin();
 });
 
 // Start the bot
