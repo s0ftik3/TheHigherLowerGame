@@ -33,7 +33,6 @@ bot.start(startCommand());
 bot.action('start', gameCommand());
 bot.action('next', nextCommand());
 bot.action('cancel', stopCommand());
-bot.action('help', helpCommand());
 bot.action('back', backCommand());
 bot.action(/trYes-*\w+/, correctCommand());
 bot.action(/trNo-*\w+/, wrongCommand());
