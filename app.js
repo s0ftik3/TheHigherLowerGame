@@ -1,8 +1,6 @@
 // Connect telegraf framework
 const telegraf = require('telegraf');
 const bot = new telegraf(process.env.TOKEN);
-const Telegram = require('telegraf/telegram');
-const telegram = new Telegram(process.env.TOKEN);
 
 // Connect database
 const mongoose = require('mongoose');
