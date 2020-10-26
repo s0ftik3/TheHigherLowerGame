@@ -4,7 +4,6 @@ const nextCommand = require('./trivia/next');
 const correctCommand = require('./trivia/correct');
 const wrongCommand = require('./trivia/wrong');
 const stopCommand = require('./trivia/stop');
-const helpCommand = require('./help');
 const backCommand = require('./vanilla/back');
 const vanillaCommand = require('./vanilla/vanilla');
 const vanillaCorrectCommand = require('./vanilla/vanillaCorrect');
@@ -18,7 +17,6 @@ module.exports = {
     correctCommand,
     wrongCommand,
     stopCommand,
-    helpCommand,
     backCommand,
     vanillaCommand,
     vanillaCorrectCommand,

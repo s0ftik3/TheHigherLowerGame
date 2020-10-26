@@ -20,7 +20,6 @@ const {
     correctCommand,
     wrongCommand,
     stopCommand,
-    helpCommand,
     backCommand,
     vanillaCommand,
     vanillaCorrectCommand,
