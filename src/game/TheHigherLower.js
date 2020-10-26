@@ -45,15 +45,9 @@ class TheHigherLowerGame {
     }
 
     /**
-     * Start The Higher Lower game
+     * Collect data for Vanilla mode into one object and return it
      * @public
      */
-    start() {
-
-        return this.collectData();
-        
-    }
-
     vanillaCollectData(pre_title, pre_searches) {
 
         // Generate two random numbers
@@ -76,6 +70,16 @@ class TheHigherLowerGame {
         // Return data
         return result;
 
+    }
+
+    /**
+     * Start The Higher Lower game
+     * @public
+     */
+    start() {
+
+        return this.collectData();
+        
     }
     
 }
